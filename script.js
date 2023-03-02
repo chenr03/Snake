@@ -5,7 +5,7 @@
 
     let gameOver = false;
     let foodX, foodY;
-    let snakeX = 5, snakeY = 10;
+    let snakeX = 5, snakeY = 5;
     let velocityX = 0, velocityY = 0;
     let snakeBody = [];
     let setIntervalId;
@@ -29,26 +29,26 @@
         location.reload();
     }
 
-    const changDirection = (e) => {
+    const changeDirection = (e) => {
         // changing velocity value based on key press
-        if (e.key === 'ArrowUp' && velocityY !== 1) {
+        if (e.key === 'ArrowUp' && velocityY != 1) {
             velocityX = 0;
             velocityY = -1;
-        } else if (e.key === "ArrowDown" && velocityY !== -1) {
+        } else if (e.key === "ArrowDown" && velocityY != -1) {
             velocityX = 0;
             velocityY = 1;
-        } else if (e.key === "ArrowLeft" && velocityX !== 1) {
+        } else if (e.key === "ArrowLeft" && velocityX != 1) {
             velocityX = -1;
             velocityY = 0;
-        } else if (e.key === "ArrowRight" && velocityX !== -1) {
+        } else if (e.key === "ArrowRight" && velocityX != -1) {
             velocityX = 1;
             velocityY = 0;
         }
 
 
         controls.forEach(key => {
-            // calling changDirection on each key click and passing key dataset value as an object
-            key.addEventListener('click', () => changDirection({ key: key.dataset.key }))
+            // calling changeDirection on each key click and passing key dataset value as an object
+            key.addEventListener("click", () => changeDirection({ key: key.dataset.key }))
         })
     }
         const initGame = () => {
@@ -95,5 +95,7 @@
 
 
         changeFoodPosition();
-        setIntervalId = setInterval(initGame, 125);
-        document.addEventListener('keydown', changDirection);
+        setIntervalId = setInterval(initGame, 100);
+        document.addEventListener('keyup', changeDirection);
+        document.addEventListener('keydown', changeDirection);
+        document.addEventListener('click', changeDirection);
