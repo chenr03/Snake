@@ -2,6 +2,8 @@ const playBoard = document.querySelector(".play-board");
 const scoreElement = document.querySelector(".score");
 const highScoreElement = document.querySelector(".high-score");
 const controls = document.querySelectorAll(".controls i");
+const controls2 = document.querySelectorAll(".controls2 i");
+const controls3 = document.querySelectorAll(".controls3 i");
 
 let gameOver = false;
 let foodX, foodY;
@@ -48,6 +50,14 @@ const changeDirection = e => {
 controls.forEach(button => button.addEventListener
                                             ("click", () => changeDirection
                                             ({ key: button.dataset.key })));
+
+controls2.forEach(button => button.addEventListener
+                                            ("click", () => changeDirection
+                                            ({ key: button.dataset.key })));
+
+controls3.forEach(button => button.addEventListener
+                                            ('click', () => changeDirection
+                                            ({key: button.dataset.key })));
 
 const initGame = () => {
     if(gameOver) return handleGameOver();
