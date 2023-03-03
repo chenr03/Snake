@@ -48,6 +48,7 @@ body {
 .controls {
     display: none;
     justify-content: space-between;
+
 }
 .controls i {
     padding: 25px 0;
